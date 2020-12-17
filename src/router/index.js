@@ -4,7 +4,7 @@
  * @Author: zzp
  * @Date: 2020-12-11 19:05:08
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-16 09:38:58
+ * @LastEditTime: 2020-12-16 16:51:54
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -13,7 +13,11 @@ import loginRouter from './Login'
 Vue.use(VueRouter)
 
 const routes = [
-  loginRouter
+  loginRouter,
+  {
+    path: '/*',
+    redirect: '/login'
+  }
 ]
 
 const router = new VueRouter({
