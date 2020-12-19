@@ -4,13 +4,15 @@
  * @Author: zzp
  * @Date: 2020-12-16 10:02:21
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-18 00:19:30
+ * @LastEditTime: 2020-12-18 10:05:41
 -->
 <!-- 登录框 -->
 <template>
   <v-app class="login-box">
     <div class="head-img">
-      <img src="../../assets/logo.png" alt />
+      <v-avatar size="128" style="border:5px solid #70a1ff">
+        <img src="../../assets/锅炉系统.png" alt="John" />
+      </v-avatar>
     </div>
     <v-form ref="form" v-model="valid" lazy-validation class="login-input">
       <v-text-field v-model="user.username" :counter="10" :rules="nameRules" label="用户名" required></v-text-field>
@@ -40,6 +42,7 @@
 </template>
 
 <script>
+import userapi from '@/api/user.js'
 export default {
   name: 'LoginForm',
   data () {
@@ -67,7 +70,7 @@ export default {
         // 进入等待状态
         this.loading = !this.loading
 
-        this.axios.post('/api/users/login', user).then((res) => {
+        userapi.login(user).then((res) => {
           if (res.status === 200) {
             let info = res.data
             if (info.status === -1) {
@@ -115,22 +118,15 @@ export default {
 .submit-box {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 }
 .head-img {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   display: flex;
   justify-content: center;
 }
 .login-input {
   width: 80%;
   margin-left: 50px;
-}
-.head-img img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  border: 1px solid #eee;
-  padding: 10px;
-  box-shadow: 0 0 10px #ddd;
 }
 </style>
