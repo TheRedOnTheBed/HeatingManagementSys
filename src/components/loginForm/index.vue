@@ -4,7 +4,7 @@
  * @Author: zzp
  * @Date: 2020-12-16 10:02:21
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-18 10:05:41
+ * @LastEditTime: 2020-12-19 21:19:32
 -->
 <!-- 登录框 -->
 <template>
@@ -34,8 +34,9 @@
           @click="onLogin"
           large
           :loading="loading"
+          width="120"
         >登录</v-btn>
-        <v-btn color="error" class="mr-4" @click="reset" large>重置</v-btn>
+        <v-btn color="error" class="mr-4" @click="reset" large width="120">重置</v-btn>
       </div>
     </v-form>
   </v-app>
@@ -105,8 +106,8 @@ export default {
 .login-box {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  right: 100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 500px;
   height: 400px;
   padding: 15px 15px 0;

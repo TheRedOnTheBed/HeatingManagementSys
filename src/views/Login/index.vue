@@ -4,11 +4,14 @@
  * @Author: zzp
  * @Date: 2020-12-16 09:32:28
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-17 01:20:32
+ * @LastEditTime: 2020-12-19 21:31:43
 -->
 <!--  -->
 <template>
   <div id="main">
+    <div class="title">
+      <img src="../../../public/img/heading.png" alt />
+    </div>
     <loginForm></loginForm>
   </div>
 </template>
@@ -39,11 +42,15 @@ export default {
 <style scoped>
 #main {
   position: relative;
-  height: 792px;
-  width: 1536px;
+  height: 100%;
+  width: 100%;
   /* overflow: hidden; */
-  background: url('../../../public/img/glzlxt.png') no-repeat;
-  background-size: 100% 100%;
-  background-position: top center;
+  background: url('../../../public/img/login_bg.jpg') no-repeat;
+  background-size: cover;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
 }
 </style>

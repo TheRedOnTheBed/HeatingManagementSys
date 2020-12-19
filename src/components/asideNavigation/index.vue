@@ -4,7 +4,7 @@
  * @Author: zzp
  * @Date: 2020-12-18 10:30:59
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-19 00:54:20
+ * @LastEditTime: 2020-12-19 23:00:53
 -->
 <!-- 侧边导航栏 -->
 <template>
@@ -14,6 +14,7 @@
     expand-on-hover
     mini-variant-width="70"
     :mini-variant.sync="ishover"
+    color="#dff9fb"
   >
     <v-list>
       <v-list-item class="px-2">
@@ -27,6 +28,25 @@
           <v-list-item-title class="title">Sandra Adams</v-list-item-title>
           <v-list-item-subtitle>sandra_a88@gmail.com</v-list-item-subtitle>
         </v-list-item-content>
+      </v-list-item>
+
+      <v-list-item class="px-2">
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn class="mx-4" icon color="#1e90ff" v-bind="attrs" v-on="on">
+              <v-icon size="30px">mdi-pencil-box-multiple-outline</v-icon>
+            </v-btn>
+          </template>
+          <span>修改信息</span>
+        </v-tooltip>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn class="mx-4" icon color="#ff4757" v-bind="attrs" v-on="on">
+              <v-icon size="30px">mdi-logout</v-icon>
+            </v-btn>
+          </template>
+          <span>退出登录</span>
+        </v-tooltip>
       </v-list-item>
     </v-list>
 

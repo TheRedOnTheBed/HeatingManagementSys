@@ -4,7 +4,7 @@
  * @Author: zzp
  * @Date: 2020-12-11 23:47:06
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-18 23:06:29
+ * @LastEditTime: 2020-12-19 21:46:08
  */
 import Vue from 'vue'
 import Vuetify, {
@@ -28,7 +28,8 @@ import Vuetify, {
   VIcon,
   VSystemBar,
   VContent,
-  VListItemGroup
+  VListItemGroup,
+  VCardText,
 
 } from 'vuetify/lib'
 import { Ripple } from 'vuetify/lib/directives'
@@ -57,7 +58,8 @@ export default new Vuetify({
     VSystemBar,
     VContent,
     VListGroup,
-    VListItemGroup
+    VListItemGroup,
+    VCardText
   },
   directives: {
     Ripple,
