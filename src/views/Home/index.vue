@@ -4,14 +4,14 @@
  * @Author: zzp
  * @Date: 2020-12-18 00:21:39
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-19 23:21:50
+ * @LastEditTime: 2020-12-22 17:21:55
 -->
 
 <!-- 主页视图 -->
 <template>
   <v-app>
-    <v-system-bar app height="80" color="#dff9fb">
-      <div class="sys-title">
+    <v-system-bar app height="80" color="#dff9fb" style="border-bottom:1px solid #ccc">
+      <div class="sys-title" @click="gotoHome">
         <img src="../../assets/锅炉系统.png" alt />
         <h2>供暖数据管理系统</h2>
       </div>
@@ -47,10 +47,16 @@
 
 <script>
 import AsideNavigation from '@/components/asideNavigation'
+import userapi from '@/api/user.js'
 export default {
   name: 'Home',
   components: {
     AsideNavigation
+  },
+  created () {
+  },
+  mounted () {
+
   },
   data () {
     return {
@@ -78,7 +84,7 @@ export default {
     footerFun (index) {
       switch (index) {
         case 1: {
-          this.$router.replace('/login')
+          this.gotoHome()
           break
         }
         case 2: {
@@ -89,6 +95,11 @@ export default {
           console.log(333)
           break
         }
+      }
+    },
+    gotoHome () {
+      if (this.$router.path != '/home/main') {
+        this.$router.push('/home')
       }
     },
     logOut () {

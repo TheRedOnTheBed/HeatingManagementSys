@@ -4,7 +4,7 @@
  * @Author: zzp
  * @Date: 2020-12-11 23:47:19
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-19 21:07:37
+ * @LastEditTime: 2020-12-20 22:49:04
  */
 module.exports = {
   devServer: {
@@ -12,7 +12,7 @@ module.exports = {
     port: 8999,
     proxy: {
       '/api': {
-        'target': 'http://localhost:3000',
+        'target': 'http://localhost:9000',
         'changeOrigin': true,
       },
     }

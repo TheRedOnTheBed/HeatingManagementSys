@@ -4,7 +4,7 @@
  * @Author: zzp
  * @Date: 2020-12-18 10:11:35
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-19 13:42:00
+ * @LastEditTime: 2020-12-19 23:27:12
  */
 export default {
   path: '/home',
@@ -13,6 +13,10 @@ export default {
     {
       path: 'main',
       component: () => import('@/components/homePage'),
+    },
+    {
+      path: 'userlist',
+      component: () => import('@/components/userList'),
     },
     {
       path: '/home',

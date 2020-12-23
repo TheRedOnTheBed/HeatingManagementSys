@@ -4,7 +4,7 @@
  * @Author: zzp
  * @Date: 2020-12-16 10:02:21
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-19 21:19:32
+ * @LastEditTime: 2020-12-23 16:35:49
 -->
 <!-- 登录框 -->
 <template>
@@ -72,22 +72,20 @@ export default {
         this.loading = !this.loading
 
         userapi.login(user).then((res) => {
-          if (res.status === 200) {
-            let info = res.data
-            if (info.status === -1) {
-              this.$message.error(`${info.msg}`)
-            } else if (info.status === 0) {
-              this.$message.warning(`${info.msg}`)
-            } else {
-              this.$message.success(`${info.msg}`)
-            }
+          let info = res.data
+          if (info.status == 1) {
+            this.$message.success(`${info.msg}`)
             this.$refs.form.reset()
             this.$refs.form.resetValidation()
+            // 结束状态
+            this.loading = !this.loading
+            localStorage.token = info.token
+            this.$router.push('/home')
           }
-          // 结束状态
-          this.loading = !this.loading
         }).catch((err) => {
-          console.log(err)
+          this.$refs.form.reset()
+          this.$refs.form.resetValidation()
+          this.loading = !this.loading
         })
       }
     },
@@ -95,9 +93,6 @@ export default {
       this.$refs.form.reset()
       this.$refs.form.resetValidation()
     },
-    open2 () {
-      this.$message.error('错了哦，这是一条错误消息')
-    }
   },
 }
 
