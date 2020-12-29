@@ -4,7 +4,7 @@
  * @Author: zzp
  * @Date: 2020-12-20 23:09:56
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-22 13:01:35
+ * @LastEditTime: 2020-12-25 00:54:38
  */
 import axios from 'axios'
 import Vue from 'vue'
@@ -33,6 +33,7 @@ http.interceptors.response.use(res => {
   if (err.response.data.msg) {
     Vue.prototype.$message.error(err.response.data.msg)
     if (err.response.status === 401) {
+      localStorage.clear()
       router.push('/login')
     }
   }

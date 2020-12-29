@@ -4,7 +4,7 @@
  * @Author: zzp
  * @Date: 2020-12-18 10:30:59
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-23 17:19:22
+ * @LastEditTime: 2020-12-28 17:47:46
 -->
 <!-- 侧边导航栏 -->
 <template>
@@ -85,18 +85,23 @@ import userapi from '@/api/user.js'
 export default {
   name: 'AsideNavigation',
   watch: {
-    $route (to, from) {
-      if (to.path === '/home/main' && from.path != '/home/main') {
-        this.reset()
-      }
-    }
+    // 监听当前路由，当为主页时取消侧边栏高亮
+    // $router: "reset"
+    // $route (to, from) {
+    //   if (to.path === '/home/main' && from.path != '/home/main') {
+    //     this.reset()
+    //   }
+    // }
   },
   created () {
-    this.lodeUserInfo()
+
   },
   mounted () {
+    this.setHighLight()
+    this.lodeUserInfo()
   },
   computed: {
+
   },
   data () {
     return {
@@ -123,17 +128,17 @@ export default {
             {
               title: '实时温度',
               icon: 'mdi-coolant-temperature',
-              address: '/login',
+              address: 'timing',
             },
             {
               title: '实时水压',
               icon: 'mdi-waves',
-              address: '/login',
+              address: 'timing',
             },
             {
               title: '实时燃气压力',
               icon: 'mdi-fire',
-              address: '/login',
+              address: 'timing',
             },
           ],
           show: true,
@@ -145,17 +150,17 @@ export default {
             {
               title: '历史温度',
               icon: 'mdi-coolant-temperature',
-              address: '/login',
+              address: 'history',
             },
             {
               title: '历史水压',
               icon: 'mdi-waves',
-              address: '/login',
+              address: 'history',
             },
             {
               title: '历史燃气压力',
               icon: 'mdi-fire',
-              address: '/login',
+              address: 'history',
             },
           ],
           show: true,
@@ -179,13 +184,21 @@ export default {
   },
   methods: {
     // 重置导航栏选项
-    reset () {
-      for (let i of this.items) {
-        i.active = false
+    // reset () {
+    //   if (this.$router.path == '/home/userlist') {
+    //     this.items[1].active = true
+    //     console.log(111)
+    //   }
+    // },
+    // 设置侧边栏高亮
+    setHighLight () {
+      if (this.$route.name == 'userlist') {
+        this.items[0].active = true
       }
     },
-    lodeUserInfo () {
-      userapi.userinfo().then((res => {
+
+    async lodeUserInfo () {
+      await userapi.userinfo().then((res => {
         this.$store.commit('newUserInfo', res.data)
         this.user = res.data
         if (this.user.roleCode == 2) {

@@ -4,7 +4,7 @@
  * @Author: zzp
  * @Date: 2020-12-16 10:02:21
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-23 16:35:49
+ * @LastEditTime: 2020-12-24 17:01:46
 -->
 <!-- 登录框 -->
 <template>
@@ -56,6 +56,7 @@ export default {
       },
       nameRules: [
         v => !!v || '请填写用户名',
+        v => (v && v.length >= 3) || '用户名不得小于3位',
         v => (v && v.length <= 10) || '用户名不得大于10位',
       ],
       pwdRules: [
@@ -65,13 +66,13 @@ export default {
     }
   },
   methods: {
-    onLogin () {
+    async onLogin () {
       if (this.$refs.form.validate()) {
         const user = this.user
         // 进入等待状态
         this.loading = !this.loading
 
-        userapi.login(user).then((res) => {
+        await userapi.login(user).then((res) => {
           let info = res.data
           if (info.status == 1) {
             this.$message.success(`${info.msg}`)

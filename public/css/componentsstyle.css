@@ -1,0 +1,11 @@
+.brief-bar {
+  line-height: 40px;
+  font-size: 15px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  margin: 0 30px;
+}
+
+.el-card {
+  margin: 10px 30px;
+}

@@ -4,7 +4,7 @@
  * @Author: zzp
  * @Date: 2020-12-18 00:21:39
  * @LastEditors: zzp
- * @LastEditTime: 2020-12-22 17:21:55
+ * @LastEditTime: 2020-12-25 00:57:06
 -->
 
 <!-- 主页视图 -->
@@ -18,10 +18,6 @@
     </v-system-bar>
     <AsideNavigation></AsideNavigation>
     <v-main>
-      <el-breadcrumb separator-class="el-icon-arrow-right" class="brief-bar">
-        <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-      </el-breadcrumb>
-
       <v-container fluid class="main-container">
         <keep-alive>
           <router-view></router-view>
@@ -88,11 +84,10 @@ export default {
           break
         }
         case 2: {
-          console.log(222)
           break
         }
         case 3: {
-          console.log(333)
+          this.logOut()
           break
         }
       }
@@ -103,7 +98,21 @@ export default {
       }
     },
     logOut () {
-
+      this.$confirm('是否退出登录?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        // 清除token
+        localStorage.clear()
+        // 进入登录页面
+        this.$router.push('/login')
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消退出'
+        })
+      })
     }
   },
 }
@@ -125,13 +134,6 @@ export default {
   height: 100%;
   margin: 0;
   padding: 0;
-}
-.brief-bar {
-  line-height: 40px;
-  font-size: 18px;
-  padding: 10px 0;
-  border-bottom: 1px solid #ccc;
-  margin: 0 30px;
 }
 </style>
 
